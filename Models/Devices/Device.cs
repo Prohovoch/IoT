@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 using IoT.Models.DeviceTelemetry;
 using IoT.Models.Hubs;
 
@@ -8,10 +9,16 @@ namespace IoT.Models.Devices
     public class Device
     {
         public Guid Id { get; set; } = Guid.CreateVersion7();
-        public required Hub HubId { get; set; } 
+
+        public Guid HubId { get; set; }
+        
+        public Hub Hub { get; set; } = null!;
 
         public string? DevAlias {  get; set; }
 
-        public DevTelemetry? DeviceTelemetry {  get; set; }
+        /*
+         * 1 to 1 relation ship
+         */
+        public DevTelemetry? Telemetry {  get; set; }
     }
 }

@@ -9,13 +9,19 @@ namespace IoT.Models.Hubs
     public class Hub
     {
         public Guid Id { get; set; } = Guid.CreateVersion7();
-        public required User UserId { get; set; }
+        public Guid UserId { get; set; }
         public bool HubIsActive { get; set; }
 
         public string? HubAlias { get; set; }
 
-        public List<Device>? Devices;
-        public List<Robot>? Robots;
+        public User User { get; set; } = null!;
+
+        /*
+         * 1 : m relations
+         * 1 : m relations
+         */
+        public ICollection<Device> Devices { get; } = new List<Device>();
+        public ICollection<Robot> Robots { get; } = new List<Robot>(); 
 
 
     }
