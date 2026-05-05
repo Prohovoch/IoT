@@ -7,10 +7,14 @@ namespace IoT.Models.Robots
     {
         public Guid Id { get; set; } = Guid.CreateVersion7();
 
-        public Hub HubId { get; set; } = null!;
+        public Guid HubId { get; set; }
 
+        public Hub Hub { get; set; } = null!;
         public string? Dev_Alias { get; set; }
 
-        public RobTelemetry? RobTelemetry { get; set; }
+        /*
+       * 1 to 1 relation ship
+       */
+        public RobTelemetry? Telemetry { get; set; }
     }
 }

@@ -8,9 +8,10 @@ namespace IoT.Models.RobotTelemetry
     public class RobTelemetry
     {
         public Guid Id { get; set; } = Guid.CreateVersion7();
-        public  Robot RobotId { get; set; } = null!;
-
+        public  Guid RobotId { get; set; }
+        public Robot Robot { get; set; } = null!;
         public string? DevType { get; set; }
+        // JSONB for postgresql
 
         public JsonDocument? Telemetry { get; set; }
 
