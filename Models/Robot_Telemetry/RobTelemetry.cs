@@ -8,7 +8,7 @@ namespace IoT.Models.RobotTelemetry
     public class RobTelemetry
     {
         public Guid Id { get; set; } = Guid.CreateVersion7();
-        public required Robot RobotId { get; set; } = null!;
+        public  Robot RobotId { get; set; } = null!;
 
         public string? DevType { get; set; }
 

@@ -8,7 +8,7 @@ namespace IoT.Models.Devices
     public class Device
     {
         public Guid Id { get; set; } = Guid.CreateVersion7();
-        public required Hub HubId { get; set; } = null!;
+        public Hub HubId { get; set; } = null!;
 
         public string? DevAlias {  get; set; }
 

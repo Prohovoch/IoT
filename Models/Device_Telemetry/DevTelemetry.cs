@@ -12,7 +12,7 @@ namespace IoT.Models.DeviceTelemetry
         public Guid Id { get; set; } = Guid.CreateVersion7();
 
 
-        public required Device DeviceId { get; set; } = null!;
+        public Device DeviceId { get; set; } = null!;
         
         public string? DevType { get; set; }
 

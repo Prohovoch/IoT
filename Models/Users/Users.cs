@@ -8,11 +8,11 @@ namespace IoT.Models.Users
     public class User
     {
         public Guid Id { get; set; } = Guid.CreateVersion7();
-        public required string Name { get; set; }
-        public required string Surname {  get; set; }
+        public string Name { get; set; } = null!;
+        public string Surname { get; set; } = null!;
         public int? Age { get; set; } 
         
-        public List<Hub>? Hubs;
+        public ICollection<Hub>? Hubs;
 
     }
 }
