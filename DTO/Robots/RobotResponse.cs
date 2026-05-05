@@ -2,7 +2,8 @@
 {
     public class RobotResponse
     {
-       
+
+        public Guid Id { get; init; }
         public Guid HubId { get; init; }
         public string? DevAlias { get; init;  }
         
