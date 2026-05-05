@@ -7,7 +7,7 @@ namespace IoT.Models.Robots
     {
         public Guid Id { get; set; } = Guid.CreateVersion7();
 
-        public required Hub HubId { get; set; }
+        public required Hub HubId { get; set; } = null!;
 
         public String? Dev_Alias { get; set; }
 

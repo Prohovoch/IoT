@@ -9,7 +9,7 @@ namespace IoT.Models.Hubs
     public class Hub
     {
         public Guid Id { get; set; } = Guid.CreateVersion7();
-        public required User UserId { get; set; }
+        public required User UserId { get; set; } = null!;
         public bool HubIsActive { get; set; }
 
         public string? HubAlias { get; set; }

@@ -1,15 +1,21 @@
 ﻿using IoT.Models.Devices;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
+using System.Text.Json;
 
 namespace IoT.Models.DeviceTelemetry
 {
     [Table("dev_telemetry")]
     public class DevTelemetry
     {
+        
         public Guid Id { get; set; } = Guid.CreateVersion7();
-        public required Device DeviceId { get; set; }
+
+
+        public required Device DeviceId { get; set; } = null!;
+        
         public string? DevType { get; set; }
 
-        public IDictionary<string, object>? Telemetry { get; set; }
+        public JsonDocument? Telemetry { get; set; }
     }
 }
