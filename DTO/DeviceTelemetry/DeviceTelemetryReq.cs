@@ -9,6 +9,7 @@ namespace IoT.DTO.DeviceTelemetry
         [MaxLength(50, ErrorMessage = "More than 50 chars")]
         public string? DevType { get; set; }
 
-        public JsonDocument? Telemetry { get; set; }
+        public IDictionary<string, Object>? Telemetry { get; set; }
+    
     }
 }

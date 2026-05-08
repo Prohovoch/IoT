@@ -9,6 +9,6 @@ namespace IoT.DTO.RobotTelemetry
 
         public string? RobotType { get; init; }
 
-        public JsonDocument? Telemetry { get; init; }
+        public IDictionary<string, Object>? Telemetry { get; init; }
     }
 }

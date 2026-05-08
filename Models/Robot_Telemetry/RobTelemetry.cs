@@ -1,5 +1,6 @@
 ﻿using IoT.Models.Robots;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.InteropServices;
 using System.Text.Json;
 
 namespace IoT.Models.RobotTelemetry
@@ -13,7 +14,7 @@ namespace IoT.Models.RobotTelemetry
         public string? DevType { get; set; }
         // JSONB for postgresql
 
-        public JsonDocument? Telemetry { get; set; }
+        public IDictionary<string, Object>? Telemetry { get; set; }
 
     }
 }

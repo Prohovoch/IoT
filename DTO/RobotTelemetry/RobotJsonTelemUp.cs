@@ -7,6 +7,6 @@ namespace IoT.DTO.RobotTelemetry
     
     {
         [Required]
-        public JsonDocument? Telemetry { get; set; }
+        public IDictionary<string, Object>? Telemetry { get; set; }
     }
 }
