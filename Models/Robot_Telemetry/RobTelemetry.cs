@@ -1,7 +1,6 @@
 ﻿using IoT.Models.Robots;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Runtime.InteropServices;
-using System.Text.Json;
+
 
 namespace IoT.Models.RobotTelemetry
 {
