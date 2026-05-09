@@ -15,6 +15,6 @@ namespace IoT.Models.DeviceTelemetry
         public Device Device { get; set; } = null!;
         public string? DevType { get; set; }
         // JSONB for postgres
-        public IDictionary<string, Object>? Telemetry { get; set; }
+        public Dictionary<string, Object>? Telemetry { get; set; }
     }
 }

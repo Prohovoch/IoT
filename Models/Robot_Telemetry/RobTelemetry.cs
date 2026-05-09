@@ -13,7 +13,7 @@ namespace IoT.Models.RobotTelemetry
         public string? DevType { get; set; }
         // JSONB for postgresql
 
-        public IDictionary<string, Object>? Telemetry { get; set; }
+        public Dictionary<string, Object>? Telemetry { get; set; }
 
     }
 }
