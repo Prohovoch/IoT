@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Text.Json;
+
 
 namespace IoT.DTO.RobotTelemetry
 {
@@ -10,7 +10,7 @@ namespace IoT.DTO.RobotTelemetry
         [MaxLength(50, ErrorMessage ="more than 50 chars.")]
         public string? RobotType { get; set; }
 
-        public JsonDocument? Telemetry { get; set; }
+        public IDictionary<string, Object>? Telemetry { get; set; }
 
     }
 }
