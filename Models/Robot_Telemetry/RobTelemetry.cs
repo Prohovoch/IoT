@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace IoT.Models.RobotTelemetry
 {
-    [Table("rob_telemetry")]
+
     public class RobTelemetryEntity
     {
         public Guid Id { get; set; } = Guid.CreateVersion7();
