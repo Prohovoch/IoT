@@ -1,12 +1,11 @@
 ﻿
 using IoT.Models.Hubs;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace IoT.Models.Users
 {
-    [Table("Users")]
-    public class User
+    
+    public class UserEntity
     {
         public Guid Id { get; set; } = Guid.CreateVersion7();
 
@@ -16,7 +15,7 @@ namespace IoT.Models.Users
         public int? Age { get; set; }
 
         // 1 : m relations
-        public ICollection<Hub> Hubs { get; } = new List<Hub>();
+        public List<HubEntity>? Hubs { get; }
 
     }
 }

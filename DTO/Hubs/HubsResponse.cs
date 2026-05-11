@@ -1,4 +1,6 @@
-﻿namespace IoT.DTO.Hubs
+﻿using IoT.DTO.Devices;
+using IoT.DTO.Robots;
+namespace IoT.DTO.Hubs
 {
     public class HubsResponse
     {
@@ -12,7 +14,8 @@
 
     public class HubsResponseExtra : HubsResponse
     {
-        // ICollection<...>  Devices { get; init } = new List<Hub>();
+        IEnumerable<DeviceResponse>? Devices { get; init; }
+        IEnumerable<RobotResponse>? Robots { get; init; }
         // ICollection<...>  Robots {get; init} = new List<Robots>()
     }
 }

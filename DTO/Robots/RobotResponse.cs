@@ -1,4 +1,5 @@
-﻿namespace IoT.DTO.Robots
+﻿using IoT.DTO.RobotTelemetry;
+namespace IoT.DTO.Robots
 {
     public class RobotResponse
     {
@@ -10,10 +11,9 @@
     
     }
 
-    public class RobotResponseExtra : RobotResponse { 
-    
-        // ....
-        // ....
+    public class RobotResponseExtra : RobotResponse {
+
+        IEnumerable<RobotTelemResponse>? RobTelemetry { get; init; }
 
     }
 }
