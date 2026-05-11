@@ -5,7 +5,7 @@ using IoT.Models.Users;
 
 namespace IoT.Models.Hubs
 {
-    [Table("Hubs")]
+  
     public class HubEntity
     {
         public Guid Id { get; set; } = Guid.CreateVersion7();
@@ -14,14 +14,14 @@ namespace IoT.Models.Hubs
 
         public string? HubAlias { get; set; }
 
-        public User User { get; set; } = null!;
+        public UserEntity User { get; set; } = null!;
 
         /*
          * 1 : m relations
          * 1 : m relations
          */
         public List<DeviceEntity>? Devices { get; }
-        public List<Robot>? Robots { get; }
+        public List<RobotEntity>? Robots { get; }
 
 
     }

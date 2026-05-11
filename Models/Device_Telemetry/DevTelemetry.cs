@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace IoT.Models.DeviceTelemetry
 {
-    [Table("dev_telemetry")]
+   
     public class DevTelemetryEntity
     {
         
@@ -12,7 +12,7 @@ namespace IoT.Models.DeviceTelemetry
 
 
         public Guid DeviceId { get; set; }
-        public Device Device { get; set; } = null!;
+        public DeviceEntity Device { get; set; } = null!;
         public string? DevType { get; set; }
         // JSONB for postgres
         public Dictionary<string, Object>? Telemetry { get; set; }

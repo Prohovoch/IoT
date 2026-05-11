@@ -10,7 +10,7 @@ namespace IoT.Models.Robots
         public Guid HubId { get; set; }
 
         public HubEntity Hub { get; set; } = null!;
-        public string? Dev_Alias { get; set; }
+        public string? DevAlias { get; set; }
 
         /*
        * 1 to 1 relation ship
