@@ -6,7 +6,7 @@ using IoT.Models.Hubs;
 namespace IoT.Models.Devices
 {
     [Table("Devices")]
-    public class Device
+    public class DeviceEntity
     {
         public Guid Id { get; set; } = Guid.CreateVersion7();
 
@@ -19,6 +19,6 @@ namespace IoT.Models.Devices
         /*
          * 1 to 1 relation ship
          */
-        public DevTelemetry? Telemetry {  get; set; }
+        public DevTelemetryEntity? Telemetry {  get; set; }
     }
 }

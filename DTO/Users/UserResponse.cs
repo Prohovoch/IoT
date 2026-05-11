@@ -1,4 +1,5 @@
-﻿using IoT.Models.Hubs;
+﻿using IoT.DTO.Hubs;
+using IoT.Models.Hubs;
 
 namespace IoT.DTO.Users
 {
@@ -13,8 +14,7 @@ namespace IoT.DTO.Users
 
     public class UserResponseHubs : UserResponse
     {
-      
-       // public ICollection<Hub> Hub { get; } = new List<Hub>();
+        public IEnumerable<HubsResponse>? Hubs;
     }
 }
 

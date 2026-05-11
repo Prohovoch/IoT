@@ -1,4 +1,5 @@
-﻿namespace IoT.DTO.Devices
+﻿using IoT.DTO.DeviceTelemetry;
+namespace IoT.DTO.Devices
 {
     public class DeviceResponse
     {
@@ -10,8 +11,7 @@
 
     public class DeviceResponseExtra : DeviceResponse
     {
-        // ....
-        // ...
+        IEnumerable<DeviceTelemetryResp>? DevTelem { get; init; }
 
     }
 }

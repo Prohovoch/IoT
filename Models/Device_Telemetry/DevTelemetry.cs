@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace IoT.Models.DeviceTelemetry
 {
     [Table("dev_telemetry")]
-    public class DevTelemetry
+    public class DevTelemetryEntity
     {
         
         public Guid Id { get; set; } = Guid.CreateVersion7();
