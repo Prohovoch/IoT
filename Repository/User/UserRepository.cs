@@ -35,11 +35,11 @@ namespace IoT.Repository.User
         public async Task DeleteUserAsync(Guid id)
         {
             var user = await _context.Users.FindAsync(id);
-            if (user is null)
+            if (user is not null)
             {
-                throw new Exception($"User {id} is not found")
+                _context.Users.Remove(user);
             }
-            _context.Users.Remove(user);
+           
         }
 
         public async Task SaveChangesAsync() =>
