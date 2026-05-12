@@ -12,14 +12,14 @@ namespace IoT.Service.Hub
     
         private readonly IHubsRepository _hubRepository;
 
-        public HubService(IHubsRepository hubRepo)
+        public HubService(IHubsRepository hubRepository)
         {
-            _hubRepository = hubRepo;
+            _hubRepository = hubRepository;
         }
 
-        public async Task<IEnumerable<HubsResponse>> GetAllAsync()
+        public async Task<IEnumerable<HubsResponse>> GetAllAsync(CancellationToken ct)
         {
-            var hubs = await _hubRepository.GetAllAsync();
+            var hubs = await _hubRepository.GetAllAsync(ct);
             return hubs.Select(h => new HubsResponse
             {
                 Id = h.Id,
@@ -29,9 +29,9 @@ namespace IoT.Service.Hub
             });
         }
 
-        public async Task<HubsResponse> GetByIdAsync(Guid id)
+        public async Task<HubsResponse?> GetByIdAsync(Guid id, CancellationToken ct)
         {
-            var hub = await _hubRepository.GetByIdAsync(id);
+            var hub = await _hubRepository.GetByIdAsync(id, ct);
             if (hub is null)
                 throw new KeyNotFoundException($"Hub {id} not found");
 
@@ -44,9 +44,9 @@ namespace IoT.Service.Hub
             };
         }
 
-        public async Task<HubsResponseExtra> GetByIdWithDevicesRobotsAsync(Guid id)
+        public async Task<HubsResponseExtra?> GetByIdWithDevicesRobotsAsync(Guid id, CancellationToken ct)
         {
-            var hub = await _hubRepository.GetByIdRobDevAsync(id);
+            var hub = await _hubRepository.GetByIdRobDevAsync(id, ct);
             if (hub is null)
                 throw new KeyNotFoundException($"Hub {id} not found");
 
@@ -71,7 +71,7 @@ namespace IoT.Service.Hub
             };
         }
 
-        public async Task CreateHub(HubsRequest request, Guid userId)
+        public async Task CreateHub(HubsRequest request, Guid userId, CancellationToken ct)
         {
             var entity = new HubEntity
             {
@@ -84,9 +84,9 @@ namespace IoT.Service.Hub
             await _hubRepository.SaveChangesAsync();
         }
 
-        public async Task UpdateHub(Guid id, HubUpdate update)
+        public async Task UpdateHub(Guid id, HubUpdate update, CancellationToken ct)
         {
-            var hub = await _hubRepository.GetByIdAsync(id);
+            var hub = await _hubRepository.GetByIdAsync(id, ct);
             if (hub is null)
                 throw new KeyNotFoundException($"Hub {id} not found");
 
@@ -100,10 +100,10 @@ namespace IoT.Service.Hub
          
         }
 
-        public async Task DeleteHub(Guid id)
+        public async Task DeleteHub(Guid id, CancellationToken ct)
         {
             
-            var affected = await _hubRepository.DeleteHubAsync(id);
+            var affected = await _hubRepository.DeleteHubAsync(id, ct);
             if (affected == 0)
             {
                 throw new KeyNotFoundException(($"Hub {id} not found"));

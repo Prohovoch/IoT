@@ -5,14 +5,14 @@ namespace IoT.Service.User
     public interface IUserService
     {
         // Cotract for service
-        Task<IEnumerable<UserResponse>> GetUsersResponseAsync();
-        Task<UserResponse> GetUserById(Guid id);
-        Task<UserResponse> GetUserWithHubs(Guid id);
-        Task UserCreate(UserCreation creation);
+        Task<IEnumerable<UserResponse>> GetUsersResponseAsync(CancellationToken ct = default);
+        Task<UserResponse> GetUserById(Guid id, CancellationToken ct = default);
+        Task<UserResponse> GetUserWithHubs(Guid id, CancellationToken ct = default);
+        Task UserCreate(UserCreation creation, CancellationToken ct = default);
 
-        Task DeleteUser(Guid id);
-        Task UpdateUser(UserUpdate user);
-        Task UpdatePatch(Guid id, UserPatchUpdate patch);
+        Task DeleteUser(Guid id, CancellationToken ct = default);
+        Task UpdateUser(UserUpdate user, CancellationToken ct = default);
+        Task UpdatePatch(Guid id, UserPatchUpdate patch, CancellationToken ct = default);
 
     }
 }

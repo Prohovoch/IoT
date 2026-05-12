@@ -16,9 +16,9 @@ namespace IoT.Service.User
 
 
             // GET ALL
-            public async Task<IEnumerable<UserResponse>> GetUsersResponseAsync()
+            public async Task<IEnumerable<UserResponse>> GetUsersResponseAsync(CancellationToken ct = default)
             {
-                var users = await _userRepository.GetAllAsync();
+                var users = await _userRepository.GetAllAsync(ct);
 
                 return users.Select(u => new UserResponse
                 {
@@ -30,9 +30,9 @@ namespace IoT.Service.User
             }
 
             // GET BY ID
-            public async Task<UserResponse> GetUserById(Guid id)
+            public async Task<UserResponse> GetUserById(Guid id, CancellationToken ct = default)
             {
-                var user = await _userRepository.GetByIdAsync(id);
+                var user = await _userRepository.GetByIdAsync(id, ct);
 
                 if (user is null)
                     throw new KeyNotFoundException($"User {id} not found");
@@ -47,9 +47,9 @@ namespace IoT.Service.User
             }
 
             // GET WITH HUBS
-            public async Task<UserResponse> GetUserWithHubs(Guid id)
+            public async Task<UserResponse> GetUserWithHubs(Guid id, CancellationToken ct = default)
             {
-                var user = await _userRepository.GetByIdWithHubsAsync(id);
+            var user = await _userRepository.GetByIdWithHubsAsync(id, ct);
 
                 if (user is null)
                     throw new KeyNotFoundException($"User {id} not found");
@@ -70,7 +70,7 @@ namespace IoT.Service.User
             }
 
             // CREATE
-            public async Task UserCreate(UserCreation creation)
+            public async Task UserCreate(UserCreation creation, CancellationToken ct = default)
             {
                 var entity = new UserEntity
                 {
@@ -80,22 +80,22 @@ namespace IoT.Service.User
                 };
 
                 _userRepository.CreateUser(entity);
-                await _userRepository.SaveChangesAsync();
+                await _userRepository.SaveChangesAsync(ct);
             }
 
             // DELETE
-            public async Task DeleteUser(Guid id)
+            public async Task DeleteUser(Guid id, CancellationToken ct = default)
             {
-                var affected = await _userRepository.DeleteUserAsync(id);
+                var affected = await _userRepository.DeleteUserAsync(id, ct);
 
                 if (affected == 0)
                     throw new KeyNotFoundException($"User {id} not found");
             }
 
             // PUT — полное обновление
-            public async Task UpdateUser(UserUpdate dto)
+            public async Task UpdateUser(UserUpdate dto, CancellationToken ct)
             {
-                var user = await _userRepository.GetByIdAsync(dto.Id);
+                var user = await _userRepository.GetByIdAsync(dto.Id, ct);
 
                 if (user is null)
                     throw new KeyNotFoundException($"User {dto.Id} not found");
@@ -104,12 +104,12 @@ namespace IoT.Service.User
                 user.Surname = dto.Surname;
                 user.Age = dto.Age;
 
-                await _userRepository.UpdateUserData(dto.Id, user);
+                await _userRepository.UpdateUserData(dto.Id, user, ct);
                 
             }
 
             // PATCH — частичное обновление
-            public async Task UpdatePatch(Guid id, UserPatchUpdate patch)
+            public async Task UpdatePatch(Guid id, UserPatchUpdate patch, CancellationToken ct = default)
             {
                 var user = await _userRepository.GetByIdAsync(id);
 
@@ -125,7 +125,7 @@ namespace IoT.Service.User
                 if (patch.Age is not null)
                     user.Age = patch.Age;
 
-                await _userRepository.UpdateUserData(id, user);
+                await _userRepository.UpdateUserData(id, user, ct);
                 
             }
         }
