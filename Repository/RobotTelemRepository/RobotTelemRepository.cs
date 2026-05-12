@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IoT.Repository.RobotTelemRepository
 {
-    public class RobotRepository : IRobotRepository
+    public class RobotTelemRepository : IRobotTelemRepository
     {
         private readonly ApplicationDbContext _dbContext;
 
-        public RobotRepository(ApplicationDbContext dbContext) 
+        public RobotTelemRepository(ApplicationDbContext dbContext) 
         {
 
                 _dbContext = dbContext;

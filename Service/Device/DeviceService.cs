@@ -5,7 +5,7 @@ using IoT.Repository.Device;
 
 namespace IoT.Service.Device
 {
-    public class DeviceService
+    public class DeviceService : IDeviceService
     {
         private readonly IDeviceRepository _deviceRepository;
 

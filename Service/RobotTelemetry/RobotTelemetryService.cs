@@ -7,9 +7,9 @@ namespace IoT.Service.RobotTelemetry
 {
         public class RobotTelemetryService : IRobotTelemetry
         {
-            private readonly IRobotRepository _robTelemRepository;
+            private readonly IRobotTelemRepository _robTelemRepository;
 
-            public RobotTelemetryService(IRobotRepository robTelemRepository)
+            public RobotTelemetryService(IRobotTelemRepository robTelemRepository)
             {
                 _robTelemRepository = robTelemRepository;
             }

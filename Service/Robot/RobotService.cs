@@ -4,7 +4,7 @@ using IoT.Models.Robots;
 using IoT.Repository.Robots;
 namespace IoT.Service.Robot
 {
-    public class RobotService
+    public class RobotService:IRobotService
     {
         private readonly IRobotRepository _robotRepository;
 
@@ -91,10 +91,10 @@ namespace IoT.Service.Robot
             
         }
 
-        public async Task DeleteRobot(Guid id)
+        public async Task DeleteRobot(Guid id, CancellationToken ct)
         {
 
-            var affected = await _robotRepository.DeleteRobotAsync(id);
+            var affected = await _robotRepository.DeleteRobotAsync(id, ct);
             if (affected == 0)
             {
                 throw new KeyNotFoundException($"Robot {id} not found");

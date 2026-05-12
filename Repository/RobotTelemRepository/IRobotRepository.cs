@@ -2,7 +2,7 @@
 
 namespace IoT.Repository.RobotTelemRepository
 {
-    public interface IRobotRepository
+    public interface IRobotTelemRepository
     {
         Task<IEnumerable<RobTelemetryEntity>> GetAllAsync(CancellationToken ct = default);
         Task<RobTelemetryEntity?> GetByIdAsync(Guid id, CancellationToken ct = default);
