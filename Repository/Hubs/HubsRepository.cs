@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IoT.Repository.Hubs
 {
-    public class HubsRepository : IHubsRepoository
+    public class HubsRepository : IHubsRepository
 
     {
         private readonly ApplicationDbContext _dbcontext;
