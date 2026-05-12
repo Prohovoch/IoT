@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Nodes;
 
 
 namespace IoT.DTO.DeviceTelemetry
@@ -9,7 +10,7 @@ namespace IoT.DTO.DeviceTelemetry
         [MaxLength(50, ErrorMessage = "More than 50 chars")]
         public string? DevType { get; set; }
 
-        public IDictionary<string, Object>? Telemetry { get; set; }
+        public JsonNode? Telemetry { get; set; }
     
     }
 }

@@ -1,5 +1,7 @@
 ﻿
 
+using System.Text.Json;
+
 namespace IoT.DTO.RobotTelemetry
 {
     public class RobotTelemResponse
@@ -9,6 +11,6 @@ namespace IoT.DTO.RobotTelemetry
 
         public string? RobotType { get; init; }
 
-        public IDictionary<string, Object>? Telemetry { get; init; }
+        public JsonElement? Telemetry { get; init; }
     }
 }
