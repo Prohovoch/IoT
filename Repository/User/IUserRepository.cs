@@ -6,6 +6,7 @@ namespace IoT.Repository.User
     {
         Task<IEnumerable<UserEntity>> GetAllAsync();
         Task<UserEntity?> GetByIdAsync(Guid id);
+        Task<UserEntity?> GetByIdWithHubsAsync(Guid id);
         Task DeleteUserAsync(Guid id);
         Task CreateUserAsync(UserEntity user);
         Task UpdateUserData(Guid id, UserEntity user);
