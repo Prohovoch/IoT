@@ -4,13 +4,18 @@
 namespace IoT.DTO.RobotTelemetry
 {
     public class RobotTelemetryUp
-    
+
     {
-        [Required]
-        [MaxLength(50, ErrorMessage ="More than 50 symbols.")]
+
         public string? RobotType { get; set; }
-        
-        
+
+        public string? Status { get; set; }
+        public int? PosX { get; set; }
+        public int? PosY { get; set; }
+
+        public int? Battery { get; set; }
+
+        public float? Speed {get; set;}
 
     }
 }
