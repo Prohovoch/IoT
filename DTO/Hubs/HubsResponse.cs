@@ -14,8 +14,8 @@ namespace IoT.DTO.Hubs
 
     public class HubsResponseExtra : HubsResponse
     {
-        IEnumerable<DeviceResponse>? Devices { get; init; }
-        IEnumerable<RobotResponse>? Robots { get; init; }
+        public IEnumerable<DeviceResponse>? Devices { get; init; }
+        public IEnumerable<RobotResponse>? Robots { get; init; }
         // ICollection<...>  Robots {get; init} = new List<Robots>()
     }
 }
