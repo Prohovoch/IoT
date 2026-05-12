@@ -21,7 +21,7 @@ namespace IoT.Repository.RobotTelemRepository
             await _dbContext.RobotTelemetries.AsNoTracking().ToListAsync(ct);
         public async Task<RobTelemetryEntity?> GetByIdAsync(Guid id, CancellationToken ct = default) =>
             await _dbContext.RobotTelemetries.Where(rt => rt.Id == id).FirstOrDefaultAsync(ct);
-        public async Task DeleteTelemAsync(Guid id, CancellationToken ct = default) =>
+        public async Task <int> DeleteTelemAsync(Guid id, CancellationToken ct = default) =>
             await _dbContext.RobotTelemetries.Where(rt => rt.Id == id).ExecuteDeleteAsync(ct);
 
         public void CreateTelemetry(RobTelemetryEntity telemetry) => _dbContext.RobotTelemetries.Add(telemetry);

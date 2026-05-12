@@ -11,7 +11,7 @@ namespace IoT.DTO.Devices
 
     public class DeviceResponseExtra : DeviceResponse
     {
-        IEnumerable<DeviceTelemetryResp>? DevTelem { get; init; }
+       public  IEnumerable<DeviceTelemetryResp>? DevTelem { get; init; }
 
     }
 }

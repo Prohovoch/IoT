@@ -26,7 +26,7 @@ namespace IoT.Repository.Device
         public async Task<DeviceEntity?> GetByIdTelemAsync(Guid id, CancellationToken ct = default) =>
             await _dbContext.Devices.Include(d => d.Telemetry ).FirstOrDefaultAsync(d => d.Id == id, ct);
 
-        public async Task DeleteDeviceAsync(Guid id, CancellationToken ct = default) =>
+        public async Task<int> DeleteDeviceAsync(Guid id, CancellationToken ct = default) =>
             await _dbContext.Devices.Where(d => d.Id == id).ExecuteDeleteAsync(ct);
         public void CreateDevice(DeviceEntity device)
         {

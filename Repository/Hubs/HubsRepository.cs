@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IoT.Repository.Hubs
 {
-    public class HubsRepository : IHubsRepoository
+    public class HubsRepository : IHubsRepository
 
     {
         private readonly ApplicationDbContext _dbcontext;
@@ -21,7 +21,7 @@ namespace IoT.Repository.Hubs
 
         public async Task<HubEntity?> GetByIdRobDevAsync(Guid id, CancellationToken ct = default) =>
             await _dbcontext.Hubs
-            .Include(h => h.Devices )
+            .Include(h => h.Devices)
             .Include(h=>h.Robots)
             .AsSplitQuery()
             .FirstOrDefaultAsync(h => h.Id == id, ct);
@@ -46,7 +46,7 @@ namespace IoT.Repository.Hubs
 
         
 
-        public async Task DeleteHubAsync(Guid id, CancellationToken ct = default) =>
+        public async Task <int> DeleteHubAsync(Guid id, CancellationToken ct = default) =>
             await _dbcontext.Hubs.Where(h => h.Id == id).ExecuteDeleteAsync(ct);
 
         public async Task SaveChangesAsync(CancellationToken ct = default) =>

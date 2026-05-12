@@ -6,7 +6,7 @@ namespace IoT.DTO.Users
     public class UserUpdate
     {
         
-    
+        public Guid Id { get; set; }
         public string Name { get; set; } = string.Empty;
 
        
