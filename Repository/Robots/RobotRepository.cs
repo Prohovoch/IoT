@@ -25,7 +25,7 @@ namespace IoT.Repository.Robots
         public async Task<RobotEntity?> GetByIdTelemAsync(Guid id, CancellationToken ct = default) =>
             await _dbContext.Robots.Include(r => r.Telemetry).FirstOrDefaultAsync(r => r.Id == id, ct);
 
-        public async Task DeleteRobotAsync(Guid id, CancellationToken ct = default) =>
+        public async Task <int> DeleteRobotAsync(Guid id, CancellationToken ct = default) =>
             await _dbContext.Robots.Where(r => r.Id == id).ExecuteDeleteAsync(ct);
         public void CreateRobot(RobotEntity robot)
         {

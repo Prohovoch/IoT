@@ -13,7 +13,7 @@ namespace IoT.DTO.Robots
 
     public class RobotResponseExtra : RobotResponse {
 
-        IEnumerable<RobotTelemResponse>? RobTelemetry { get; init; }
+        public IEnumerable<RobotTelemResponse>? RobTelemetry { get; init; }
 
     }
 }

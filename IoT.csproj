@@ -20,4 +20,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Service\Robot\IRobotService.cs" />
+  </ItemGroup>
+
 </Project>

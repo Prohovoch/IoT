@@ -12,8 +12,8 @@ namespace IoT.DTO.RobotTelemetry
         public string? RobotType { get; init; }
 
         public string? Status { get; init; }
-        public int? PosX { get; init; }
-        public int? PosY { get; init; }
+        public float? PosX { get; init; }
+        public float? PosY { get; init; }
 
         public int? Battery { get; init; }
 
