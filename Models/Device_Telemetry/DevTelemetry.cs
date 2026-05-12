@@ -1,5 +1,6 @@
 ﻿using IoT.Models.Devices;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json;
 
 
 namespace IoT.Models.DeviceTelemetry
@@ -15,6 +16,6 @@ namespace IoT.Models.DeviceTelemetry
         public DeviceEntity Device { get; set; } = null!;
         public string? DevType { get; set; }
         // JSONB for postgres
-        public Dictionary<string, Object>? Telemetry { get; set; }
+        public JsonDocument? Telemetry { get; set; }
     }
 }

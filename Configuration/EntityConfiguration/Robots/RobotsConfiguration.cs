@@ -18,7 +18,7 @@ namespace IoT.Configuration.EntityConfiguration.Robots
 
 
             builder.Property(r => r.DevAlias).IsRequired().HasMaxLength(50).HasColumnName("dev_alias");
-            builder.Property(r => r.Id).HasColumnName("id");
+            builder.Property(r => r.Id).HasColumnName("id").ValueGeneratedOnAdd();
             builder.Property(r => r.HubId).IsRequired().HasColumnName("hub_id");
            
 

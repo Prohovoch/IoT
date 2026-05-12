@@ -16,7 +16,7 @@ namespace IoT.Configuration.EntityConfiguration.DeviceTelemetry
                 .HasForeignKey<DevTelemetryEntity>(d => d.DeviceId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            builder.Property(t => t.Id).HasColumnName("id");
+            builder.Property(t => t.Id).HasColumnName("id").ValueGeneratedOnAdd();
             builder.Property(t => t.DeviceId).IsRequired().HasColumnName("device_id");
             builder.Property(t => t.DevType).HasColumnName("dev_type").HasMaxLength(50);
             builder.Property(t => t.Telemetry).HasColumnName("telemetry").HasColumnType("jsonb");

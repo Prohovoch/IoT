@@ -16,7 +16,7 @@ namespace IoT.Configuration.EntityConfiguration.Users
                 .HasForeignKey(h => h.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
             
-            builder.Property(u => u.Id).HasColumnName("id");
+            builder.Property(u => u.Id).HasColumnName("id").ValueGeneratedOnAdd();
             builder.Property(u => u.Name).IsRequired().HasColumnName("Name").HasMaxLength(50);
             builder.Property(u => u.Surname).IsRequired().HasColumnName("Surname").HasMaxLength(50);
             builder.Property(u => u.Age).HasColumnName("age");

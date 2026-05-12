@@ -15,6 +15,6 @@ namespace IoT.DTO.Users
         public string Surname {get; set;} = string.Empty;
 
         [Range(0,100, ErrorMessage = "Bad value.")]
-        public int? Age { get; set;}
+        public int Age { get; set;}
     }
 }

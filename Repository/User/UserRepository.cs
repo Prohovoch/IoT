@@ -6,44 +6,54 @@ namespace IoT.Repository.User
 {
     public class UserRepository : IUserRepository
     {
-        private readonly ApplicationDbContext _context;
-        public UserRepository(ApplicationDbContext context)
+        private readonly ApplicationDbContext _dbcontext;
+        public UserRepository(ApplicationDbContext dbcontext)
         {
 
-            _context = context;
+            _dbcontext = dbcontext;
 
         }
 
         public async Task<UserEntity?> GetByIdAsync(Guid id) => 
-            await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+            await _dbcontext.Users.FirstOrDefaultAsync(u => u.Id == id);
         
             
 
         public async Task<UserEntity?> GetByIdWithHubsAsync(Guid id) =>
-            await _context.Users
+            await _dbcontext.Users
             .Include(u => u.Hubs)
             .FirstOrDefaultAsync(u => u.Id == id);
 
         public async Task<IEnumerable<UserEntity>> GetAllAsync() =>
-            await _context.Users.AsNoTracking().ToListAsync();
+            await _dbcontext.Users.AsNoTracking().ToListAsync();
 
 
-        public async Task CreateUserAsync(UserEntity user) =>
-            await _context.Users.AddAsync(user);
-
-        
-        public async Task DeleteUserAsync(Guid id)
-        {
-            var user = await _context.Users.FindAsync(id);
-            if (user is not null)
-            {
-                _context.Users.Remove(user);
-            }
-           
+        public async Task CreateUserAsync(UserEntity user)
+        {   
+            // -> hack????
+            await _dbcontext.Users.AddAsync(user);
+            
+          
         }
+            
+             
+
+
+        public async Task UpdateUserData(Guid id, UserEntity user) =>
+            await _dbcontext.Users.Where(u => u.Id == id).ExecuteUpdateAsync(u => u.SetProperty(u => u.Name, u => user.Name)
+            .SetProperty(u => u.Surname, u => user.Surname)
+            .SetProperty(u => u.Age, u => user.Age));
+
+        public async Task UpdatePartialUserData(Guid id, UserEntity user) =>
+            await _dbcontext.Users.Where(u => u.Id == id).ExecuteUpdateAsync(u => u.SetProperty(u => u.Name, u => user.Name ?? u.Name)
+            .SetProperty(u => u.Surname, u => user.Surname ?? u.Surname)
+            .SetProperty(u => u.Age, u => user.Age ?? u.Age));
+
+        public async Task DeleteUserAsync(Guid id) =>
+            await _dbcontext.Users.Where(u => u.Id == id).ExecuteDeleteAsync();
 
         public async Task SaveChangesAsync() =>
-            await _context.SaveChangesAsync();
+            await _dbcontext.SaveChangesAsync();
     }
 
    

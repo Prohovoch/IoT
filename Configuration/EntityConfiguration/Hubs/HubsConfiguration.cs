@@ -20,7 +20,7 @@ namespace IoT.Configuration.EntityConfiguration.Hubs
                 .HasForeignKey(r => r.HubId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            builder.Property(h =>  h.Id).HasColumnName("id");
+            builder.Property(h =>  h.Id).HasColumnName("id").ValueGeneratedOnAdd();
 
             builder.Property(h => h.UserId).IsRequired().HasColumnName("user_id");
 

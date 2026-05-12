@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 
 
 namespace IoT.DTO.RobotTelemetry
@@ -7,6 +9,6 @@ namespace IoT.DTO.RobotTelemetry
     
     {
         [Required]
-        public IDictionary<string, Object>? Telemetry { get; set; }
+        public JsonNode? Telemetry { get; set; }
     }
 }
