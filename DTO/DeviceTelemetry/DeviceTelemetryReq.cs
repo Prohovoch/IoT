@@ -12,6 +12,7 @@ namespace IoT.DTO.DeviceTelemetry
         public float? Temp { get; set; }
         public float? Press { get; set; }
 
+        [Range (0, 100, ErrorMessage ="Only between 0 and 100")]
         public int? BattLevel { get; set; }
         public string? Status { get; set; }
 
