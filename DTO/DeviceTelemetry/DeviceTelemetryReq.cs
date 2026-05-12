@@ -6,11 +6,16 @@ namespace IoT.DTO.DeviceTelemetry
 {
     public class DeviceTelemetryReq
     {
-        public Guid DeviceId { get; set; }
+        
         [MaxLength(50, ErrorMessage = "More than 50 chars")]
         public string? DevType { get; set; }
+        public float? Temp { get; set; }
+        public float? Press { get; set; }
 
-        public JsonNode? Telemetry { get; set; }
-    
+        public int? BattLevel { get; set; }
+        public string? Status { get; set; }
+
+
+
     }
 }

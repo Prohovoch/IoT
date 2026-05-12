@@ -4,7 +4,6 @@ namespace IoT.DTO.Hubs
 {
     public class HubsRequest
     {
-        public Guid UserId { get; set; }
         
         [MaxLength(50, ErrorMessage ="More than 50 chars")]
         public string? HubAlias { get; set;  }

@@ -19,7 +19,11 @@ namespace IoT.Configuration.EntityConfiguration.DeviceTelemetry
             builder.Property(t => t.Id).HasColumnName("id").ValueGeneratedOnAdd();
             builder.Property(t => t.DeviceId).IsRequired().HasColumnName("device_id");
             builder.Property(t => t.DevType).HasColumnName("dev_type").HasMaxLength(50);
-            builder.Property(t => t.Telemetry).HasColumnName("telemetry").HasColumnType("jsonb");
+            builder.Property(t => t.Pressure).HasColumnName("pressure").HasPrecision(18,4).HasColumnType("decimal");
+            builder.Property(t => t.BatteryLevel).HasColumnName("battery_level").HasColumnType("int");
+            builder.Property(t => t.Tempreature).HasColumnName("tempreature").HasPrecision(18, 4).HasColumnType("decimal");
+            builder.Property(t => t.Status).HasColumnName("status").HasColumnType("varchar");
+            
 
         }
     }
